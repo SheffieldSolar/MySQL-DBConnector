@@ -13,6 +13,10 @@ This README would normally document whatever steps are necessary to get your app
 * Open a terminal or command prompt and cd into the directory fo the repo
 * Run `pip install -e .`
 
+### How do I update? ###
+
+* Pull the master branch of the Git repo.
+
 ### Contribution guidelines ###
 
 * To Do
