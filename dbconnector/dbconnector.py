@@ -52,8 +52,9 @@ class DBConnectorException(Exception):
 
 class DBConnectionPool:
     """Handle connections to the DB manually rather than relying on MySQL connection pooling."""
-    def __init__(self, pool_size, **kwargs):
+    def __init__(self, pool_size, logfile, **kwargs):
         self.conn_args = kwargs
+        self.logfile = logfile
         self.raise_on_warnings = kwargs.get('raise_on_warnings', False)
         self.connection_pool = []
         self.connections = 0

@@ -81,7 +81,7 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        "mysql-connector>=2.1.6",
+        "mysql-connector==2.1.6",
     ],
 
     # List additional groups of dependencies here (e.g. development
