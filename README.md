@@ -21,10 +21,10 @@ This README would normally document whatever steps are necessary to get your app
 
 * Jamie Taylor [SheffieldSolar](https://github.com/SheffieldSolar)
 
-## Authors
+### Authors ###
 
 * **Jamie Taylor** - *Initial work* - [SheffieldSolar](https://github.com/SheffieldSolar)
 
-## License
+### License ###
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
