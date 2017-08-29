@@ -25,8 +25,6 @@ This README would normally document whatever steps are necessary to get your app
 
 * **Jamie Taylor** - *Initial work* - [SheffieldSolar](https://github.com/SheffieldSolar)
 
-See also the list of [contributors](https://bitbucket.org/SheffieldSolar/dbconnector/contributors) who participated in this project.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
