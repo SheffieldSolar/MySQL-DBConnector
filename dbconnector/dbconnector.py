@@ -255,7 +255,8 @@ class DBConnector:
         cnx = None
         try:
             cnx = self.pool.get_connection()
-            cnx.time_zone = self.session_tz
+            if self.session_tz is not None:
+                cnx.time_zone = self.session_tz
         except mysql.connector.Error as err:
             if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
                 raise DBConnectorException(self.logfile, "Something is wrong with the mysql "

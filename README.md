@@ -5,7 +5,7 @@ This README would normally document whatever steps are necessary to get your app
 ### What is this repository for? ###
 
 * A wrapper for the MySQL Python connector that provides additional resilience and functionality.
-* Version 1.1.1
+* Version 1.1.2
 
 ### How do I get set up? ###
 
