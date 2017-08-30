@@ -21,7 +21,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### Who do I talk to? ###
 
-* Jamie Taylor <[jamie.taylor@sheffield.ac.uk](jamie.taylor@sheffield.ac.uk)> - [SheffieldSolar](https://github.com/SheffieldSolar)
+* Jamie Taylor <[jamie.taylor@sheffield.ac.uk](mailto:jamie.taylor@sheffield.ac.uk) "Email Jamie"> - [SheffieldSolar](https://github.com/SheffieldSolar)
 
 ### Authors ###
 
