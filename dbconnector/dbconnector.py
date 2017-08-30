@@ -50,6 +50,25 @@ class DBConnectorException(Exception):
     def __str__(self):
         return self.msg
 
+class DBConnectorLog:
+    """Record, read and analyse DBConnector stats."""
+    def __init__(self, logfile, db_config):
+        self.logfile = logfile
+        self.status = {0: "success", 1: "error", 2: "warning"}
+        if "database" in db_config:
+            self.host = "{}.{}.{}".format(db_config["host"], db_config["user"].
+                                          db_config["database"])
+        else:
+            _, self.host = os.path.split(db_config["option_files"])
+
+    def log_query(self, sql, start, time_taken, status=0, error=None):
+        if self.logfile is None:
+            return
+        status = self.status[status]
+        with open(self.logfile, "ab") as log:
+            log.write("{}|{}|{}|{}|{}|{}|{}\n".format(datetime.utcnow(), self.host, start, sql, status, error,
+                                                   time_taken))
+
 class DBConnectionPool:
     """Handle connections to the DB manually rather than relying on MySQL connection pooling."""
     def __init__(self, pool_size, logfile, **kwargs):
@@ -132,7 +151,7 @@ class DBConnectionPool:
 class DBConnector:
     """Create a connection to a database and provide a means of querying."""
     def __init__(self, mysql_defaults=None, logfile=None, db_config=None, session_tz=None,
-                 use_pure=True):
+                 use_pure=True, query_log=None):
         """
         Parameters
         ----------
@@ -151,6 +170,8 @@ class DBConnector:
             extentsion (False). Default is True i.e. pure Python. N.B. C extension is much quicker
             when returning large datasets - see `Connector/Python C Extension Docs
             <https://dev.mysql.com/doc/connector-python/en/connector-python-cext.html>`_.
+        `query_log` : string
+            Optionally specify a log file where query stats will be logged.
         Notes
         -----
         You must either pass the mysql defaults file (which must contain all of the required
@@ -201,6 +222,13 @@ class DBConnector:
         self.sleep_interval = 1
         self.cnx_retries = 10
         self.session_tz = session_tz
+        self.query_log = DBConnectorLog(query_log, self.db_config)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        self.close_connections()
 
     def _connect(self):
         """
@@ -289,11 +317,20 @@ class DBConnector:
         success = False
         while not success:
             cnx = self._safe_connect()
+            start = datetime.utcnow()
             try:
                 result = query_type(cnx, **kwargs)
                 success = True
+                if self.query_log is not None:
+                    time_taken = (datetime.utcnow() - start).total_seconds()
+                    sql = kwargs.get('sqlquery', None)
+                    self.query_log.log_query(sql, start, time_taken)
             except mysql.connector.Error as err:
                 if err.errno in self.excusable_errors:
+                    if self.query_log is not None:
+                        time_taken = (datetime.utcnow() - start).total_seconds()
+                        sql = kwargs.get('sqlquery', None)
+                        self.query_log.log_query(sql, start, time_taken, 1, err)
                     self.pool.return_connection(cnx)
                     print "MySQL Error... %s" % str(err)
                     TIME.sleep(self.sleep_interval)
