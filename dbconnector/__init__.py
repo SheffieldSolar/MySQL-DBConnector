@@ -1,3 +1,3 @@
-from dbconnector import DBConnector
+from dbconnector.dbconnector import DBConnector
 
 __all__ = ["DBConnector"]
