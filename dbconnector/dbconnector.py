@@ -281,7 +281,7 @@ class DBConnector:
             try:
                 test = cnx.is_connected()
             except:
-                print "_connect() FAILED!! Retrying in %d seconds" % self.sleep_interval
+                print("_connect() FAILED!! Retrying in %d seconds" % self.sleep_interval)
                 self.pool.return_connection(cnx)
                 test = False
                 TIME.sleep(self.sleep_interval)
@@ -332,7 +332,7 @@ class DBConnector:
                         sql = kwargs.get('sqlquery', None)
                         self.query_log.log_query(sql, start, time_taken, 1, err)
                     self.pool.return_connection(cnx)
-                    print "MySQL Error... %s" % str(err)
+                    print("MySQL Error... %s" % str(err))
                     TIME.sleep(self.sleep_interval)
                     self.sleep_interval *= 2
                 else:

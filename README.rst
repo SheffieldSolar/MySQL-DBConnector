@@ -7,14 +7,17 @@ What is this repository for?
 ----------------------------
 
 * A wrapper for the MySQL Python connector that provides additional resilience and functionality.
-* 1.0.0
+* 1.1.1
 
 How do I get set up?
 --------------------
 
-* Clone or download the repository
-* Open a terminal or command prompt and cd into the directory fo the repo
-* Run `pip install -e .`
+* Run `pip install [-e] git+http://bitbucket.org/SheffieldSolar/dbconnector`
+
+How do I update?
+----------------
+
+* Run `pip install --upgrade dbconnector`
 
 Contribution guidelines
 -----------------------
@@ -25,11 +28,12 @@ Who do I talk to?
 -----------------
 
 * Jamie Taylor `[SheffieldSolar] <https://bitbucket.org/SheffieldSolar>`_
+* Jamie Taylor - `jamie.taylor@sheffield.ac.uk <mailto:jamie.taylor@sheffield.ac.uk>`_ - `SheffieldSolar <https://github.com/SheffieldSolar>`_
 
 Authors
 -------
 
-* **Jamie Taylor** - *Initial work* - `[SheffieldSolar] <https://bitbucket.org/SheffieldSolar>`_
+* **Jamie Taylor** - *Initial work* - `SheffieldSolar <https://bitbucket.org/SheffieldSolar>`_
 
 License
 -------
