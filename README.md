@@ -13,7 +13,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I update? ###
 
-* Run `pip install --upgrade dbconnector`
+* Run `pip install --upgrade git+http://bitbucket.org/SheffieldSolar/dbconnector`
 
 ### Contribution guidelines ###
 
