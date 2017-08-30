@@ -7,7 +7,7 @@ functionality.
 
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime
 import time as TIME
 import os
 import sys
@@ -56,18 +56,19 @@ class DBConnectorLog:
         self.logfile = logfile
         self.status = {0: "success", 1: "error", 2: "warning"}
         if "database" in db_config:
-            self.host = "{}.{}.{}".format(db_config["host"], db_config["user"].
+            self.host = "{}.{}.{}".format(db_config["host"], db_config["user"],
                                           db_config["database"])
         else:
             _, self.host = os.path.split(db_config["option_files"])
 
     def log_query(self, sql, start, time_taken, status=0, error=None):
+        """Append query details to the log file."""
         if self.logfile is None:
             return
         status = self.status[status]
         with open(self.logfile, "ab") as log:
-            log.write("{}|{}|{}|{}|{}|{}|{}\n".format(datetime.utcnow(), self.host, start, sql, status, error,
-                                                   time_taken))
+            log.write("{}|{}|{}|{}|{}|{}|{}\n".format(datetime.utcnow(), self.host, start, sql,
+                                                      status, error, time_taken))
 
 class DBConnectionPool:
     """Handle connections to the DB manually rather than relying on MySQL connection pooling."""
@@ -122,7 +123,6 @@ class DBConnectionPool:
                 cnx.close()
             except:
                 self.warning("Failed to close connection...")
-                pass
         else:
             self.warning("Tried to close a non-connection.MySQLConnection object...")
         self.connections -= 1
