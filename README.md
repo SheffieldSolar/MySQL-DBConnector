@@ -9,9 +9,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-* Clone or download the repository
-* Open a terminal or command prompt and cd into the directory fo the repo
-* Run `pip install -e .`
+* Run `pip install [-e] git+http://bitbucket.org/SheffieldSolar/dbconnector`
 
 ### How do I update? ###
 
