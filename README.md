@@ -13,7 +13,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I update? ###
 
-* Pull the master branch of the Git repo.
+* Run `pip install --upgrade dbconnector`
 
 ### Contribution guidelines ###
 
