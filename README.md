@@ -9,7 +9,8 @@ This README would normally document whatever steps are necessary to get your app
 
 ### How do I get set up? ###
 
-* Run `pip install [-e] git+http://bitbucket.org/SheffieldSolar/dbconnector`
+* Make sure you have Git installed [Download Git](https://git-scm.com/downloads)
+* Run `pip install git+https://bitbucket.org/SheffieldSolar/dbconnector`
 
 ### How do I update? ###
 
