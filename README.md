@@ -1,6 +1,6 @@
-# README #
+# MySQL-DBConnector #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+A  wrapper for the MySQL Python connector that provides additional resilience and functionality.
 
 ### What is this repository for? ###
 
@@ -11,10 +11,14 @@ This README would normally document whatever steps are necessary to get your app
 
 * Make sure you have Git installed - [Download Git](https://git-scm.com/downloads)
 * Run `pip install git+https://bitbucket.org/SheffieldSolar/dbconnector`
+...OR ...
+* Run `pip install git+https://github.com/SheffieldSolar/MySQL-DBConnector/`
 
 ### How do I update? ###
 
-* Run `pip install --upgrade git+http://bitbucket.org/SheffieldSolar/dbconnector`
+* Run `pip install --upgrade git+https://bitbucket.org/SheffieldSolar/dbconnector`
+...OR ...
+* Run `pip install --upgrade git+https://github.com/SheffieldSolar/MySQL-DBConnector/
 
 ### Contribution guidelines ###
 
