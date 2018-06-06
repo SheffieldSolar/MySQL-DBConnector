@@ -10,15 +10,15 @@ A  wrapper for the MySQL Python connector that provides additional resilience an
 ### How do I get set up? ###
 
 * Make sure you have Git installed - [Download Git](https://git-scm.com/downloads)
-* Run `pip install git+https://bitbucket.org/SheffieldSolar/dbconnector`
+* Run `pip install git+https://bitbucket.org/SheffieldSolar/mysql-dbconnector/`
 ...OR ...
 * Run `pip install git+https://github.com/SheffieldSolar/MySQL-DBConnector/`
 
 ### How do I update? ###
 
-* Run `pip install --upgrade git+https://bitbucket.org/SheffieldSolar/dbconnector`
+* Run `pip install --upgrade git+https://bitbucket.org/SheffieldSolar/mysql-dbconnector/`
 ...OR ...
-* Run `pip install --upgrade git+https://github.com/SheffieldSolar/MySQL-DBConnector/
+* Run `pip install --upgrade git+https://github.com/SheffieldSolar/MySQL-DBConnector/`
 
 ### Contribution guidelines ###
 
