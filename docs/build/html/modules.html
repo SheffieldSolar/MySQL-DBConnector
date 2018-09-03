@@ -1,0 +1,247 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Modules &#8212; MySQL-DBConnector 1.1.2 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to MySQL-DBConnector’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to MySQL-DBConnector’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MySQL-DBConnector 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="modules">
+<h1><a class="toc-backref" href="#id1">Modules</a><a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#modules" id="id1">Modules</a><ul>
+<li><a class="reference internal" href="#dbconnector" id="id2">dbconnector</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="dbconnector">
+<h2><a class="toc-backref" href="#id2">dbconnector</a><a class="headerlink" href="#dbconnector" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="dbconnector.dbconnector.DBConnector">
+<em class="property">class </em><code class="descclassname">dbconnector.dbconnector.</code><code class="descname">DBConnector</code><span class="sig-paren">(</span><em>mysql_defaults=None</em>, <em>logfile=None</em>, <em>db_config=None</em>, <em>session_tz='UTC'</em>, <em>use_pure=True</em>, <em>query_log=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for the MySQL Python connector that provides additional resilience and functionality.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>`mysql_defaults`</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">Absolute path to the mysql options file, which must contain ‘host’, ‘user’, ‘password’ and
+‘database’ client options.</p>
+</dd>
+<dt><strong>`logfile`</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">Absolute path to the file into which errors should be logged.</p>
+</dd>
+<dt><strong>`db_config`</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Config for the DB connection if no mysql option file is passed. Must contain keys for
+‘user’, ‘password’, ‘database’ and ‘host’.</p>
+</dd>
+<dt><strong>`session_tz`</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">Optionally set the session timezone (useful if working with timestamps). Use any of the time
+zone names listed <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">here</a>.
+Defaults to “UTC”.</p>
+</dd>
+<dt><strong>`use_pure`</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd><p class="first last">Whether to use the pure Python implementation of MySQL connector (True) or use the C
+extentsion (False). Default is True i.e. pure Python. N.B. C extension is much quicker when
+returning large datasets - see <a class="reference external" href="https://dev.mysql.com/doc/connector-python/en/connector-python-cext.html">Connector/Python C Extension Docs</a>.</p>
+</dd>
+<dt><strong>`query_log`</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">Optionally specify a log file where query stats will be logged.</p>
+</dd>
+<dt><strong>Notes</strong></dt>
+<dd></dd>
+<dt><strong>—–</strong></dt>
+<dd></dd>
+<dt><strong>You must either pass the mysql defaults file (which must contain all of the required</strong></dt>
+<dd></dd>
+<dt><strong>parameters) or pass the db_config dict with keys: ‘host’, ‘user’, ‘password’, ‘database’.</strong></dt>
+<dd></dd>
+<dt><strong>Warnings</strong></dt>
+<dd></dd>
+<dt><strong>——–</strong></dt>
+<dd></dd>
+<dt><strong>Logging is currently not available.</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.close_connections" title="dbconnector.dbconnector.DBConnector.close_connections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close_connections</span></code></a>()</td>
+<td>Close all connections when done for optimal DB efficiency.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.iud_query" title="dbconnector.dbconnector.DBConnector.iud_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iud_query</span></code></a>(sqlquery[,&nbsp;data])</td>
+<td>Execute an insert/update/delete SQL statement with resilience.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.proc" title="dbconnector.dbconnector.DBConnector.proc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proc</span></code></a>(proc,&nbsp;args)</td>
+<td>Execute a MySQL procedure with resilience.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.query" title="dbconnector.dbconnector.DBConnector.query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query</span></code></a>(sqlquery)</td>
+<td>Query the database using select (with resilience).</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dbconnector.dbconnector.DBConnector.close_connections">
+<code class="descname">close_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.close_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.close_connections" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close all connections when done for optimal DB efficiency.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dbconnector.dbconnector.DBConnector.iud_query">
+<code class="descname">iud_query</code><span class="sig-paren">(</span><em>sqlquery</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.iud_query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.iud_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute an insert/update/delete SQL statement with resilience.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dbconnector.dbconnector.DBConnector.proc">
+<code class="descname">proc</code><span class="sig-paren">(</span><em>proc</em>, <em>args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.proc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.proc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a MySQL procedure with resilience.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dbconnector.dbconnector.DBConnector.query">
+<code class="descname">query</code><span class="sig-paren">(</span><em>sqlquery</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the database using select (with resilience).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>`sqlquery`</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">SQL <cite>select</cite> statement to be executed.</p>
+</dd>
+<dt><strong>Returns</strong></dt>
+<dd></dd>
+<dt><strong>——-</strong></dt>
+<dd></dd>
+<dt><strong>list</strong></dt>
+<dd><p class="first last">List of tuples, [(R1C1, R1C2, …), (R2C1, R2C2, …), …].
+Length of list corresponds to N rows returned, length of tuples corresponds to columns
+selected.</p>
+</dd>
+<dt><strong>See Also</strong></dt>
+<dd></dd>
+<dt><strong>——–</strong></dt>
+<dd></dd>
+<dt><strong>MySQL Connector Python Docs: https://dev.mysql.com/doc/connector-python/en/index.html.</strong></dt>
+<dd></dd>
+<dt><strong>Notes</strong></dt>
+<dd></dd>
+<dt><strong>—–</strong></dt>
+<dd></dd>
+<dt><strong>MySQL Connector Python is prone to dropped connections - this wrapper adds resilience by</strong></dt>
+<dd></dd>
+<dt><strong>retrying.</strong></dt>
+<dd></dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Modules</a><ul>
+<li><a class="reference internal" href="#dbconnector">dbconnector</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to MySQL-DBConnector’s documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/modules.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to MySQL-DBConnector’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">MySQL-DBConnector 1.1.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Jamie Taylor.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+    </div>
+  </body>
+</html>

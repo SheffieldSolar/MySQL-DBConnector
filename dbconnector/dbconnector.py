@@ -149,37 +149,40 @@ class DBConnectionPool:
         return
 
 class DBConnector:
-    """Create a connection to a database and provide a means of querying."""
-    def __init__(self, mysql_defaults=None, logfile=None, db_config=None, session_tz=None,
+    """
+    A wrapper for the MySQL Python connector that provides additional resilience and functionality.
+
+    Parameters
+    ----------
+    `mysql_defaults` : string
+        Absolute path to the mysql options file, which must contain 'host', 'user', 'password' and
+        'database' client options.
+    `logfile` : string
+        Absolute path to the file into which errors should be logged.
+    `db_config` : dict
+        Config for the DB connection if no mysql option file is passed. Must contain keys for
+        'user', 'password', 'database' and 'host'.
+    `session_tz` : string
+        Optionally set the session timezone (useful if working with timestamps). Use any of the time
+        zone names listed `here <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>`_.
+        Defaults to "UTC".
+    `use_pure` : boolean
+        Whether to use the pure Python implementation of MySQL connector (True) or use the C
+        extentsion (False). Default is True i.e. pure Python. N.B. C extension is much quicker when
+        returning large datasets - see `Connector/Python C Extension Docs
+        <https://dev.mysql.com/doc/connector-python/en/connector-python-cext.html>`_.
+    `query_log` : string
+        Optionally specify a log file where query stats will be logged.
+    Notes
+    -----
+    You must either pass the mysql defaults file (which must contain all of the required
+    parameters) or pass the db_config dict with keys: 'host', 'user', 'password', 'database'.
+    Warnings
+    --------
+    Logging is currently not available.
+    """
+    def __init__(self, mysql_defaults=None, logfile=None, db_config=None, session_tz="UTC",
                  use_pure=True, query_log=None):
-        """
-        Parameters
-        ----------
-        `mysql_defaults` : string
-            Absolute path to the mysql options file, which must contain 'host', 'user', 'password'
-            and 'database' client options.
-        `logfile` : string
-            Absolute path to the file into which errors should be logged.
-        `db_config` : dict
-            Config for the DB connection if no mysql option file is passed. Must contain keys for
-            'un', 'pw', 'db' and 'host'.
-        `session_tz` : string
-            Optionally set the session timezone (useful if working with timestamps).
-        `use_pure` : boolean
-            Whether to use the pure Python implementation of MySQL connector (True) or use the C
-            extentsion (False). Default is True i.e. pure Python. N.B. C extension is much quicker
-            when returning large datasets - see `Connector/Python C Extension Docs
-            <https://dev.mysql.com/doc/connector-python/en/connector-python-cext.html>`_.
-        `query_log` : string
-            Optionally specify a log file where query stats will be logged.
-        Notes
-        -----
-        You must either pass the mysql defaults file (which must contain all of the required
-        parameters) or pass the db_config dict with keys: 'host', 'user', 'password', 'database'.
-        Warning
-        -------
-        Logging is currently not available.
-        """
         default_timeout = 60
         pool_size = 1
         if mysql_defaults:
@@ -240,7 +243,7 @@ class DBConnector:
             Database connection object.
         See Also
         --------
-        `MySQL Connector Python Docs <https://dev.mysql.com/doc/connector-python/en/index.html>`__,
+        `MySQL Connector Python Docs <https://dev.mysql.com/doc/connector-python/en/index.html>`_,
         `MySQL Connection Pooling Docs
         <https://dev.mysql.com/doc/connector-python/en/connector-python-connection-pooling.html>`_
         Notes
@@ -358,13 +361,13 @@ class DBConnector:
             SQL `select` statement to be executed.
         Returns
         -------
-        list of tuples
+        list
             List of tuples, [(R1C1, R1C2, ...), (R2C1, R2C2, ...), ...].
             Length of list corresponds to N rows returned, length of tuples corresponds to columns
             selected.
         See Also
         --------
-        `MySQL Connector Python Docs <http://dev.mysql.com/doc/connector-python/en/index.html>`__
+        MySQL Connector Python Docs: https://dev.mysql.com/doc/connector-python/en/index.html.
         Notes
         -----
         MySQL Connector Python is prone to dropped connections - this wrapper adds resilience by
