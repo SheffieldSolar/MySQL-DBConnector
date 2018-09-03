@@ -61,6 +61,10 @@ with DBConnector(db_config=db_config, session_tz="UTC") as dbc:
     # Do some DB stuff
 ```
 
+## Documentation ##
+
+* [https://sheffieldsolar.github.io/MySQL-DBConnector/](https://sheffieldsolar.github.io/MySQL-DBConnector/)
+
 ## How do I update? ##
 
 * Run `pip install --upgrade git+https://bitbucket.org/SheffieldSolar/mysql-dbconnector/`
