@@ -24,7 +24,7 @@ from dbconnector import DBConnector
 mysql_options_file = "mysql_options.txt"
 
 # Use the context manager to ensure DB connections are always safely closed
-# Always specify the session_tz to avoid issues with MySQL's timezone-naive datetimes!
+# Always specify the session_tz to avoid issues with MySQL's timezone-naive datetimes or unwanted TZ conversions of timestamp fields!
 with DBConnector(mysql_options_file, session_tz="UTC") as dbc:
     # Selecting from the database (returns a list of tuples):
     # See https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html
