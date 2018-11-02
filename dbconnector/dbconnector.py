@@ -379,9 +379,9 @@ class DBConnector:
         """Execute a MySQL procedure with resilience."""
         return self._safe_query(self._proc_query, proc=proc, args=args)
 
-    def iud_query(self, sqlquery, data=None):
+    def iud_query(self, sqlquery, data=None, size=1000):
         """Execute an insert/update/delete SQL statement with resilience."""
-        return self._safe_query(self._iud_query, sqlquery=sqlquery, data=data)
+        return self._safe_query(self._iud_query, sqlquery=sqlquery, data=data, size=size)
 
     def close_connections(self):
         """Close all connections when done for optimal DB efficiency."""
@@ -427,7 +427,7 @@ class DBConnector:
     @staticmethod
     def _iud_query(cnx, **kwargs):
         """Execute an insert/update/delete SQL statement."""
-        size = 100
+        size = kwargs.get('size', 1000)
         data = kwargs.get('data', None)
         sqlquery = kwargs.get('sqlquery', None)
         cursor = cnx.cursor()
