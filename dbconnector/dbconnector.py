@@ -437,5 +437,6 @@ class DBConnector:
             for i in range(0, len(data), size):
                 cursor.executemany(sqlquery, data[i:(i+size)])
         cnx.commit()
+        affected = cursor.rowcount
         cursor.close()
-        return True
+        return affected
