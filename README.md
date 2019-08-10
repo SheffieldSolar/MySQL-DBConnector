@@ -6,14 +6,12 @@ A  wrapper for the MySQL Python connector that provides additional resilience an
 
 * A wrapper for the MySQL Python connector that provides additional resilience and functionality.
 * Implements connection pooling that's more reliable.
-* Version 1.1.2
+* Version 1.1.3
 * Works with Python 2.7+ or 3.5+
 
 ## How do I get set up? ##
 
 * Make sure you have Git installed - [Download Git](https://git-scm.com/downloads)
-* Run `pip install git+https://bitbucket.org/SheffieldSolar/mysql-dbconnector/`
-...OR ...
 * Run `pip install git+https://github.com/SheffieldSolar/MySQL-DBConnector/`
 
 ## Getting started ##
@@ -67,8 +65,6 @@ with DBConnector(db_config=db_config, session_tz="UTC") as dbc:
 
 ## How do I update? ##
 
-* Run `pip install --upgrade git+https://bitbucket.org/SheffieldSolar/mysql-dbconnector/`
-...OR ...
 * Run `pip install --upgrade git+https://github.com/SheffieldSolar/MySQL-DBConnector/`
 
 ## Who do I talk to? ##
