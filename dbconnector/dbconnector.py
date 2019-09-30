@@ -221,6 +221,8 @@ class DBConnector:
             errorcode.ER_LOCK_DEADLOCK,
             #Server shutdown in progress
             errorcode.ER_SERVER_SHUTDOWN,
+            #Lock wait timeout exceeded (maybe extend timeout?)
+            errorcode.ER_LOCK_WAIT_TIMEOUT,
         )
         self.sleep_interval = 1
         self.cnx_retries = 10
