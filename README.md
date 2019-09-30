@@ -6,7 +6,7 @@ A  wrapper for the MySQL Python connector that provides additional resilience an
 
 * A wrapper for the MySQL Python connector that provides additional resilience and functionality.
 * Implements connection pooling that's more reliable.
-* Version 1.1.3
+* Version 1.1.4
 * Works with Python 2.7+ or 3.5+
 
 ## How do I get set up? ##
