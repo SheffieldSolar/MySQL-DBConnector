@@ -353,7 +353,7 @@ class DBConnector:
         self.sleep_interval = 1
         return result
 
-    def query(self, sqlquery):
+    def query(self, sqlquery, df=False):
         """
         Query the database using select (with resilience).
 
@@ -361,6 +361,9 @@ class DBConnector:
         ----------
         `sqlquery` : string
             SQL `select` statement to be executed.
+        `df` : boolean
+            Set to True to return query results as Pandas DataFrame. Column names will be extracted
+            from the *sqlquery* and converted to lowercase (do not use "select * from").
         Returns
         -------
         list
@@ -375,7 +378,7 @@ class DBConnector:
         MySQL Connector Python is prone to dropped connections - this wrapper adds resilience by
         retrying.
         """
-        return self._safe_query(self._select_query, sqlquery=sqlquery)
+        return self._safe_query(self._select_query, sqlquery=sqlquery, df=df)
 
     def proc(self, proc, args):
         """Execute a MySQL procedure with resilience."""
@@ -407,10 +410,21 @@ class DBConnector:
     def _select_query(cnx, **kwargs):
         """Execute a select query."""
         sqlquery = kwargs.get('sqlquery', None)
+        df = kwargs.get('df', False)
         cursor = cnx.cursor()
         cursor.execute(sqlquery)
         result = cursor.fetchall()
         cursor.close()
+        if df:
+            from pandas import DataFrame
+            import re
+            col_regex = "(?<=^select)[a-zA-Z0-9_\s*(),`]+(?=from)"
+            cols = [c.strip().split(" as ")[-1].strip().strip("`") for c in
+                    re.findall(col_regex, sqlquery.lower())[0].strip().split(",")]
+            if result[0]:
+                return DataFrame(result, columns=cols)
+            else:
+                return DataFrame({c: [] for c in cols})
         return result
 
     @staticmethod

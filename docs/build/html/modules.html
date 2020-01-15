@@ -9,11 +9,13 @@
     <title>Modules &#8212; MySQL-DBConnector 1.1.2 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Welcome to MySQL-DBConnector’s documentation!" href="index.html" /> 
@@ -39,7 +41,7 @@
   <div class="section" id="modules">
 <h1><a class="toc-backref" href="#id1">Modules</a><a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
-<p class="topic-title first">Contents</p>
+<p class="topic-title">Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#modules" id="id1">Modules</a><ul>
 <li><a class="reference internal" href="#dbconnector" id="id2">dbconnector</a></li>
@@ -108,41 +110,41 @@ returning large datasets - see <a class="reference external" href="https://dev.m
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.close_connections" title="dbconnector.dbconnector.DBConnector.close_connections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close_connections</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.close_connections" title="dbconnector.dbconnector.DBConnector.close_connections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close_connections</span></code></a>(self)</td>
 <td>Close all connections when done for optimal DB efficiency.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.iud_query" title="dbconnector.dbconnector.DBConnector.iud_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iud_query</span></code></a>(sqlquery[,&nbsp;data])</td>
+<tr class="row-even"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.iud_query" title="dbconnector.dbconnector.DBConnector.iud_query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iud_query</span></code></a>(self,&nbsp;sqlquery[,&nbsp;data,&nbsp;size])</td>
 <td>Execute an insert/update/delete SQL statement with resilience.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.proc" title="dbconnector.dbconnector.DBConnector.proc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proc</span></code></a>(proc,&nbsp;args)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.proc" title="dbconnector.dbconnector.DBConnector.proc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">proc</span></code></a>(self,&nbsp;proc,&nbsp;args)</td>
 <td>Execute a MySQL procedure with resilience.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.query" title="dbconnector.dbconnector.DBConnector.query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query</span></code></a>(sqlquery)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.query" title="dbconnector.dbconnector.DBConnector.query"><code class="xref py py-obj docutils literal notranslate"><span class="pre">query</span></code></a>(self,&nbsp;sqlquery[,&nbsp;df])</td>
 <td>Query the database using select (with resilience).</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="dbconnector.dbconnector.DBConnector.close_connections">
-<code class="descname">close_connections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.close_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.close_connections" title="Permalink to this definition">¶</a></dt>
+<code class="descname">close_connections</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.close_connections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.close_connections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Close all connections when done for optimal DB efficiency.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="dbconnector.dbconnector.DBConnector.iud_query">
-<code class="descname">iud_query</code><span class="sig-paren">(</span><em>sqlquery</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.iud_query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.iud_query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">iud_query</code><span class="sig-paren">(</span><em>self</em>, <em>sqlquery</em>, <em>data=None</em>, <em>size=1000</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.iud_query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.iud_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute an insert/update/delete SQL statement with resilience.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="dbconnector.dbconnector.DBConnector.proc">
-<code class="descname">proc</code><span class="sig-paren">(</span><em>proc</em>, <em>args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.proc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.proc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">proc</code><span class="sig-paren">(</span><em>self</em>, <em>proc</em>, <em>args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.proc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.proc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Execute a MySQL procedure with resilience.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="dbconnector.dbconnector.DBConnector.query">
-<code class="descname">query</code><span class="sig-paren">(</span><em>sqlquery</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.query" title="Permalink to this definition">¶</a></dt>
+<code class="descname">query</code><span class="sig-paren">(</span><em>self</em>, <em>sqlquery</em>, <em>df=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Query the database using select (with resilience).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -151,6 +153,10 @@ returning large datasets - see <a class="reference external" href="https://dev.m
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
 <dt><strong>`sqlquery`</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
 <dd><p class="first last">SQL <cite>select</cite> statement to be executed.</p>
+</dd>
+<dt><strong>`df`</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span></dt>
+<dd><p class="first last">Set to True to return query results as Pandas DataFrame. Column names will be extracted
+from the <em>sqlquery</em> and converted to lowercase (do not use “select * from”).</p>
 </dd>
 <dt><strong>Returns</strong></dt>
 <dd></dd>
@@ -193,7 +199,7 @@ selected.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Modules</a><ul>
 <li><a class="reference internal" href="#dbconnector">dbconnector</a></li>
@@ -241,7 +247,7 @@ selected.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Jamie Taylor.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>

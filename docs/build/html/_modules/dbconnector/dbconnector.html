@@ -9,11 +9,13 @@
     <title>dbconnector.dbconnector &#8212; MySQL-DBConnector 1.1.2 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -387,7 +389,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="n">result</span>
 
-<div class="viewcode-block" id="DBConnector.query"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.query">[docs]</a>    <span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sqlquery</span><span class="p">):</span>
+<div class="viewcode-block" id="DBConnector.query"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.query">[docs]</a>    <span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sqlquery</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Query the database using select (with resilience).</span>
 
@@ -395,6 +397,9 @@
 <span class="sd">        ----------</span>
 <span class="sd">        `sqlquery` : string</span>
 <span class="sd">            SQL `select` statement to be executed.</span>
+<span class="sd">        `df` : boolean</span>
+<span class="sd">            Set to True to return query results as Pandas DataFrame. Column names will be extracted</span>
+<span class="sd">            from the *sqlquery* and converted to lowercase (do not use &quot;select * from&quot;).</span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        list</span>
@@ -409,15 +414,15 @@
 <span class="sd">        MySQL Connector Python is prone to dropped connections - this wrapper adds resilience by</span>
 <span class="sd">        retrying.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_select_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_select_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DBConnector.proc"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.proc">[docs]</a>    <span class="k">def</span> <span class="nf">proc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proc</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute a MySQL procedure with resilience.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_proc_query</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="n">proc</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="DBConnector.iud_query"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.iud_query">[docs]</a>    <span class="k">def</span> <span class="nf">iud_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="DBConnector.iud_query"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.iud_query">[docs]</a>    <span class="k">def</span> <span class="nf">iud_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute an insert/update/delete SQL statement with resilience.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_iud_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_iud_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DBConnector.close_connections"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.close_connections">[docs]</a>    <span class="k">def</span> <span class="nf">close_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Close all connections when done for optimal DB efficiency.&quot;&quot;&quot;</span>
@@ -441,10 +446,21 @@
     <span class="k">def</span> <span class="nf">_select_query</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute a select query.&quot;&quot;&quot;</span>
         <span class="n">sqlquery</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sqlquery&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="n">cursor</span> <span class="o">=</span> <span class="n">cnx</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sqlquery</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">df</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span>
+            <span class="kn">import</span> <span class="nn">re</span>
+            <span class="n">col_regex</span> <span class="o">=</span> <span class="s2">&quot;(?&lt;=^select)[a-zA-Z0-9_\s*(),`]+(?=from)&quot;</span>
+            <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; as &quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;`&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span>
+                    <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">col_regex</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">.</span><span class="n">lower</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="k">return</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">DataFrame</span><span class="p">({</span><span class="n">c</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">})</span>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="nd">@staticmethod</span>
@@ -463,7 +479,7 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_iud_query</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute an insert/update/delete SQL statement.&quot;&quot;&quot;</span>
-        <span class="n">size</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">sqlquery</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sqlquery&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">cursor</span> <span class="o">=</span> <span class="n">cnx</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
@@ -510,7 +526,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Jamie Taylor.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.8.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
     </div>
   </body>
 </html>
