@@ -421,10 +421,7 @@ class DBConnector:
             col_regex = "(?<=^select)[a-zA-Z0-9_\s*(),`]+(?=from)"
             cols = [c.strip().split(" as ")[-1].strip().strip("`") for c in
                     re.findall(col_regex, sqlquery.lower())[0].strip().split(",")]
-            if result[0]:
-                return DataFrame(result, columns=cols)
-            else:
-                return DataFrame({c: [] for c in cols})
+            return DataFrame(result, columns=cols)
         return result
 
     @staticmethod
