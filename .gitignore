@@ -1,2 +1,3 @@
 *.pyc
 dbconnector.egg-info/
+example_db_options.secret

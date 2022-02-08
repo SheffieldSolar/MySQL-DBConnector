@@ -1,40 +1,72 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>dbconnector.dbconnector &#8212; MySQL-DBConnector 1.1.2 documentation</title>
-    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dbconnector.dbconnector &mdash; MySQL-DBConnector 1.3.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">MySQL-DBConnector 1.1.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
-      </ul>
-    </div>  
+</head>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> MySQL-DBConnector
+          </a>
+              <div class="version">
+                1.3
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Welcome to MySQL-DBConnector’s documentation!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MySQL-DBConnector</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>dbconnector.dbconnector</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
   <h1>Source code for dbconnector.dbconnector</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">A wrapper for the MySQL Python connector that provides additional resilience and</span>
@@ -45,75 +77,57 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">TIME</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">info</span><span class="p">,</span> <span class="n">debug</span><span class="p">,</span> <span class="n">warning</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">critical</span><span class="p">,</span> <span class="n">exception</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
 <span class="kn">import</span> <span class="nn">mysql.connector</span>
-<span class="kn">from</span> <span class="nn">mysql.connector</span> <span class="k">import</span> <span class="n">errorcode</span><span class="p">,</span> <span class="n">connection</span>
-
-<span class="k">class</span> <span class="nc">GenericErrorLogger</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Basic error logging to a file (optional).&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">filename</span>
-
-    <span class="k">def</span> <span class="nf">write_to_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Log the error message to the logfile along with a datestamp and the name of the script</span>
-<span class="sd">        (in case of shared logfiles).</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        `msg` : string</span>
-<span class="sd">            Message to be recorded in *self.logfile*.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">T%H:%M:%S&#39;</span><span class="p">)</span>
-        <span class="n">scriptname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
-        <span class="n">fid</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
-        <span class="n">fid</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">timestamp</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">scriptname</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">fid</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">return</span>
+<span class="kn">from</span> <span class="nn">mysql.connector</span> <span class="kn">import</span> <span class="n">errorcode</span><span class="p">,</span> <span class="n">connection</span>
 
 <span class="k">class</span> <span class="nc">DBConnectorException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;An Exception specific to the DBConnector class.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logfile</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">caller_file</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="n">caller_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> (in &#39;</span><span class="si">%s</span><span class="s2">&#39;)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">caller_file</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">logfile</span><span class="p">:</span>
-            <span class="n">logger</span> <span class="o">=</span> <span class="n">GenericErrorLogger</span><span class="p">(</span><span class="n">logfile</span><span class="p">)</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">write_to_log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> (in &#39;</span><span class="si">{</span><span class="n">caller_file</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">msg</span>
 
 <span class="k">class</span> <span class="nc">DBConnectorLog</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Record, read and analyse DBConnector stats.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logfile</span><span class="p">,</span> <span class="n">db_config</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logfile</span><span class="p">,</span> <span class="n">conn_args</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">logfile</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;warning&quot;</span><span class="p">}</span>
-        <span class="k">if</span> <span class="s2">&quot;database&quot;</span> <span class="ow">in</span> <span class="n">db_config</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span>
-                                          <span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;database&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="s2">&quot;option_files&quot;</span> <span class="ow">in</span> <span class="n">conn_args</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">conn_args</span><span class="p">[</span><span class="s2">&quot;option_files&quot;</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;option_files&quot;</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">conn_args</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">conn_args</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">conn_args</span><span class="p">[</span><span class="s1">&#39;database&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
 
-    <span class="k">def</span> <span class="nf">log_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">time_taken</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">log_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">time_taken</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">err</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Append query details to the log file.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span>
         <span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="n">status</span><span class="p">]</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="s2">&quot;ab&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">log</span><span class="p">:</span>
-            <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">|</span><span class="si">{}</span><span class="s2">|</span><span class="si">{}</span><span class="s2">|</span><span class="si">{}</span><span class="s2">|</span><span class="si">{}</span><span class="s2">|</span><span class="si">{}</span><span class="s2">|</span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span>
-                                                      <span class="n">status</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">time_taken</span><span class="p">))</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">sql</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">|&quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">time_taken</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">DBConnectionPool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Handle connections to the DB manually rather than relying on MySQL connection pooling.&quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pool_size</span><span class="p">,</span> <span class="n">logfile</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conn_args</span> <span class="o">=</span> <span class="n">kwargs</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">logfile</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_warnings</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raise_on_warnings&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connector_args</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">pool_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conn_args</span> <span class="o">=</span> <span class="n">connector_args</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connection_pool</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connections</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_pool</span> <span class="o">=</span> <span class="n">pool_size</span>
@@ -122,7 +136,7 @@
         <span class="sd">&quot;&quot;&quot;Create a new connection using *self.conn_args*.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">conn_args</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">get_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_get_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Take a connection out of the pool. If the pool is exhausted, either create a new connection</span>
 <span class="sd">        or raise a &quot;Connection pool exhausted&quot; exception if the maximum pool size has been reached.</span>
@@ -136,54 +150,48 @@
                 <span class="n">cnx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_connection</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">connections</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection pool exhausted.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection pool exhausted.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">cnx</span>
 
-    <span class="k">def</span> <span class="nf">return_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cnx</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_return_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cnx</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a connection to the pool. Incoming connections are tested and if they are no longer</span>
-<span class="sd">        usable will be disgarded using *DBConnectionPool.close_connection*, which frees up the slot.</span>
+<span class="sd">        usable will be disgarded using *DBConnectionPool._close_connection*, which frees up the slot.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="n">connection</span><span class="o">.</span><span class="n">MySQLConnection</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">cnx</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">connection_pool</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">close_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="n">connection</span><span class="o">.</span><span class="n">MySQLConnection</span><span class="p">)</span> <span class="ow">and</span> <span class="n">cnx</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection_pool</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Tried to return an object that is not connection.MySQLConnection object &quot;</span>
-                         <span class="s2">&quot;to the pool...&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_close_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
         <span class="k">return</span>
 
-    <span class="k">def</span> <span class="nf">close_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cnx</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_close_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cnx</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Permanently close a connection and free up a slot in *self.connections*.&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="n">connection</span><span class="o">.</span><span class="n">MySQLConnection</span><span class="p">):</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">cnx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to close connection...&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Tried to close a non-connection.MySQLConnection object...&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">connections</span> <span class="o">-=</span> <span class="mi">1</span>
         <span class="k">return</span>
 
     <span class="k">def</span> <span class="nf">close_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Close all connections when done with them for maximum DB efficiency.&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">cnx</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection_pool</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">close_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_close_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">connections</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to account for all connections in DBConnectionPool.close_all()...&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Failed to account for all connections in DBConnectionPool.close_all()&quot;</span><span class="p">)</span>
         <span class="k">return</span>
 
-    <span class="k">def</span> <span class="nf">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Print a nicely formatted warning or raise as an error if *self.raise_on_warnings* is set to</span>
-<span class="sd">        True.</span>
+<span class="sd">        Log a warning or raise as an error if *self.conn_args[&quot;raise_on_warnings&quot;]* is set to True.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;WARNING! </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">msg</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_warnings</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">conn_args</span><span class="p">[</span><span class="s2">&quot;raise_on_warnings&quot;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="k">return</span>
 
 <div class="viewcode-block" id="DBConnector"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector">[docs]</a><span class="k">class</span> <span class="nc">DBConnector</span><span class="p">:</span>
@@ -192,61 +200,54 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    `mysql_defaults` : string</span>
-<span class="sd">        Absolute path to the mysql options file, which must contain &#39;host&#39;, &#39;user&#39;, &#39;password&#39; and</span>
-<span class="sd">        &#39;database&#39; client options.</span>
-<span class="sd">    `logfile` : string</span>
-<span class="sd">        Absolute path to the file into which errors should be logged.</span>
-<span class="sd">    `db_config` : dict</span>
-<span class="sd">        Config for the DB connection if no mysql option file is passed. Must contain keys for</span>
-<span class="sd">        &#39;user&#39;, &#39;password&#39;, &#39;database&#39; and &#39;host&#39;.</span>
-<span class="sd">    `session_tz` : string</span>
-<span class="sd">        Optionally set the session timezone (useful if working with timestamps). Use any of the time</span>
-<span class="sd">        zone names listed `here &lt;https://en.wikipedia.org/wiki/List_of_tz_database_time_zones&gt;`_.</span>
-<span class="sd">        Defaults to &quot;UTC&quot;.</span>
-<span class="sd">    `use_pure` : boolean</span>
-<span class="sd">        Whether to use the pure Python implementation of MySQL connector (True) or use the C</span>
-<span class="sd">        extentsion (False). Default is True i.e. pure Python. N.B. C extension is much quicker when</span>
-<span class="sd">        returning large datasets - see `Connector/Python C Extension Docs</span>
-<span class="sd">        &lt;https://dev.mysql.com/doc/connector-python/en/connector-python-cext.html&gt;`_.</span>
-<span class="sd">    `query_log` : string</span>
+<span class="sd">    connector_args : dict</span>
+<span class="sd">        A dictionary of connect args to pass to `mysql.connector.connect()`. The full list of args</span>
+<span class="sd">        can be found `here &lt;https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html&gt;`_.</span>
+<span class="sd">        Some args are set to default values which override those of the `mysql-connector-python`</span>
+<span class="sd">        lib. These are:</span>
+
+<span class="sd">        - `time_zone`: &quot;UTC&quot;</span>
+<span class="sd">        - `connection_timeout`: 60</span>
+<span class="sd">        - `buffered`: True</span>
+<span class="sd">        - `get_warnings`: True</span>
+<span class="sd">        - `raise_on_warnings`: False</span>
+<span class="sd">        - `use_pure`: True</span>
+<span class="sd">    query_log : string, optional</span>
 <span class="sd">        Optionally specify a log file where query stats will be logged.</span>
+<span class="sd">    pool_size : int, optional</span>
+<span class="sd">        Optionally specify the maximum pool size (i.e. number of connections open at any time).</span>
+<span class="sd">        Default is 1.</span>
+<span class="sd">    cnx_retries : int, optional</span>
+<span class="sd">        Optionally specify the maximum number of times to retry failed connections/queries.</span>
+<span class="sd">        Default is 10.</span>
+<span class="sd">    sleep_interval : int, optional</span>
+<span class="sd">        Optionally specify time (in seconds) to sleep inbetween failed connections/queries which are</span>
+<span class="sd">        retried. This code uses an exponentil back-off, so the sleep time will double after each</span>
+<span class="sd">        failed connection / query - this arg determines the initial sleep time. Default is 1.</span>
+
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    You must either pass the mysql defaults file (which must contain all of the required</span>
-<span class="sd">    parameters) or pass the db_config dict with keys: &#39;host&#39;, &#39;user&#39;, &#39;password&#39;, &#39;database&#39;.</span>
-<span class="sd">    Warnings</span>
-<span class="sd">    --------</span>
-<span class="sd">    Logging is currently not available.</span>
+<span class="sd">    Some `connector_args` have no defaults and are always required: &#39;user&#39;, &#39;password&#39;, &#39;database&#39;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mysql_defaults</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">logfile</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">db_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session_tz</span><span class="o">=</span><span class="s2">&quot;UTC&quot;</span><span class="p">,</span>
-                 <span class="n">use_pure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">query_log</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">default_timeout</span> <span class="o">=</span> <span class="mi">60</span>
-        <span class="n">pool_size</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">mysql_defaults</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">db_config</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;option_files&quot;</span><span class="p">:</span> <span class="n">mysql_defaults</span><span class="p">,</span>
-                <span class="s2">&quot;connection_timeout&quot;</span><span class="p">:</span> <span class="n">default_timeout</span><span class="p">,</span>
-                <span class="s2">&quot;buffered&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                <span class="s2">&quot;get_warnings&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                <span class="s2">&quot;raise_on_warnings&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-                <span class="s2">&quot;use_pure&quot;</span><span class="p">:</span> <span class="n">use_pure</span><span class="p">,</span>
-            <span class="p">}</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">db_config</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;user&quot;</span><span class="p">],</span>
-                <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">],</span>
-                <span class="s2">&quot;database&quot;</span><span class="p">:</span> <span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;database&quot;</span><span class="p">],</span>
-                <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="n">db_config</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span>
-                <span class="s2">&quot;connection_timeout&quot;</span><span class="p">:</span> <span class="n">default_timeout</span><span class="p">,</span>
-                <span class="s2">&quot;buffered&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                <span class="s2">&quot;get_warnings&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                <span class="s2">&quot;raise_on_warnings&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-                <span class="s2">&quot;use_pure&quot;</span><span class="p">:</span> <span class="n">use_pure</span><span class="p">,</span>
-            <span class="p">}</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">DBConnectionPool</span><span class="p">(</span><span class="n">pool_size</span><span class="p">,</span> <span class="n">logfile</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">db_config</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">logfile</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">excusable_errors</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">connector_args</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="n">query_log</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">pool_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">cnx_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">sleep_interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connector_args</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;time_zone&quot;</span><span class="p">:</span> <span class="s2">&quot;UTC&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;connection_timeout&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+            <span class="s2">&quot;buffered&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;get_warnings&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s2">&quot;raise_on_warnings&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;use_pure&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connector_args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">connector_args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">DBConnectionPool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connector_args</span><span class="p">,</span> <span class="n">pool_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">retry_errors</span> <span class="o">=</span> <span class="p">(</span>
             <span class="c1">#Can&#39;t connect to MySQL server on...</span>
             <span class="n">errorcode</span><span class="o">.</span><span class="n">CR_CONN_HOST_ERROR</span><span class="p">,</span>
             <span class="n">errorcode</span><span class="o">.</span><span class="n">CR_IPSOCK_ERROR</span><span class="p">,</span>
@@ -259,17 +260,47 @@
             <span class="n">errorcode</span><span class="o">.</span><span class="n">ER_LOCK_DEADLOCK</span><span class="p">,</span>
             <span class="c1">#Server shutdown in progress</span>
             <span class="n">errorcode</span><span class="o">.</span><span class="n">ER_SERVER_SHUTDOWN</span><span class="p">,</span>
+            <span class="c1">#Lock wait timeout exceeded (maybe extend timeout?)</span>
+            <span class="n">errorcode</span><span class="o">.</span><span class="n">ER_LOCK_WAIT_TIMEOUT</span><span class="p">,</span>
         <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span> <span class="o">=</span> <span class="mi">10</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">session_tz</span> <span class="o">=</span> <span class="n">session_tz</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">query_log</span> <span class="o">=</span> <span class="n">DBConnectorLog</span><span class="p">(</span><span class="n">query_log</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_config</span><span class="p">)</span>
+        <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;config: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_redacted_connector_args</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span> <span class="o">=</span> <span class="n">sleep_interval</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span> <span class="o">=</span> <span class="n">cnx_retries</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">query_log</span> <span class="o">=</span> <span class="n">DBConnectorLog</span><span class="p">(</span><span class="n">query_log</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connector_args</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Enter the context manager. Test the connection and log a debug message.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_test_query</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span>
 
-    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">close_connections</span><span class="p">()</span>
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_close_connections</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_test_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new connection and submit a test query to see if the connection has been</span>
+<span class="sd">        successful. Used to ensure any failure to connection errors occur at the point of creating</span>
+<span class="sd">        the DBConnector instance rather than waiting until the first query is made.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cnx_retries</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">connection_timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connector_args</span><span class="p">[</span><span class="s2">&quot;connection_timeout&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">conn_args</span><span class="p">[</span><span class="s2">&quot;connection_timeout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">debug</span><span class="p">(</span><span class="s2">&quot;submitting test query&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;SELECT 1;&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">debug</span><span class="p">(</span><span class="s2">&quot;test query failed&quot;</span><span class="p">)</span>
+            <span class="k">raise</span>
+        <span class="n">debug</span><span class="p">(</span><span class="s2">&quot;test query successful&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span> <span class="o">=</span> <span class="n">cnx_retries</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">conn_args</span><span class="p">[</span><span class="s2">&quot;connection_timeout&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">connection_timeout</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">_redacted_connector_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">if</span> <span class="n">k</span><span class="o">!=</span><span class="s2">&quot;password&quot;</span> <span class="k">else</span> <span class="s2">&quot;REDACTED&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">connector_args</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
 
     <span class="k">def</span> <span class="nf">_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -295,44 +326,48 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cnx</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">cnx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">get_connection</span><span class="p">()</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_tz</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">cnx</span><span class="o">.</span><span class="n">time_zone</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session_tz</span>
+            <span class="n">cnx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">_get_connection</span><span class="p">()</span>
         <span class="k">except</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="o">==</span> <span class="n">errorcode</span><span class="o">.</span><span class="n">ER_ACCESS_DENIED_ERROR</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="s2">&quot;Something is wrong with the mysql &quot;</span>
-                                           <span class="s2">&quot;username or password.&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="s2">&quot;Something is wrong with the mysql username or &quot;</span>
+                                           <span class="s2">&quot;password.&quot;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="o">==</span> <span class="n">errorcode</span><span class="o">.</span><span class="n">ER_BAD_DB_ERROR</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="s2">&quot;The database does not exist.&quot;</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">excusable_errors</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MySQL Error... </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="s2">&quot;The database does not exist.&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">retry_errors</span><span class="p">:</span>
+                <span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MySQL Connector Error: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">_return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">None</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span>
         <span class="k">return</span> <span class="n">cnx</span>
 
-    <span class="k">def</span> <span class="nf">_safe_connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get a connection to the database with added resilience.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_connect_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cnx_retries</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get a connection to the database with optional retries.&quot;&quot;&quot;</span>
         <span class="n">retries</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">test</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">while</span> <span class="ow">not</span> <span class="n">test</span> <span class="ow">and</span> <span class="n">retries</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span><span class="p">:</span>
+        <span class="n">sleep_interval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">test</span><span class="p">:</span>
             <span class="n">cnx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connect</span><span class="p">()</span>
             <span class="n">retries</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">test</span> <span class="o">=</span> <span class="n">cnx</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;_connect() FAILED!! Retrying in </span><span class="si">%d</span><span class="s2"> seconds&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cnx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">test</span> <span class="o">=</span> <span class="kc">False</span>
-                <span class="n">TIME</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span> <span class="o">*=</span> <span class="mi">2</span>
-        <span class="k">if</span> <span class="n">retries</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span><span class="p">:</span>
-            <span class="n">err</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="s2">&quot;Failed to connect to the DB after </span><span class="si">%d</span><span class="s2"> &quot;</span>
-                                       <span class="s2">&quot;retries. Latest error: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">test</span> <span class="o">=</span> <span class="n">cnx</span><span class="o">.</span><span class="n">is_connected</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">test</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">retries</span> <span class="o">&lt;</span> <span class="n">cnx_retries</span><span class="p">:</span>
+                    <span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Connection failed - retrying in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">_return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
+                    <span class="n">test</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="n">TIME</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep_interval</span><span class="p">)</span>
+                    <span class="n">sleep_interval</span> <span class="o">*=</span> <span class="mi">2</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1">#import pdb; pdb.set_trace()</span>
+                    <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to connect to the DB after </span><span class="si">{</span><span class="n">cnx_retries</span><span class="si">}</span><span class="s2"> &quot;</span>
+                                               <span class="sa">f</span><span class="s2">&quot;retries.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">cnx</span>
 
     <span class="k">def</span> <span class="nf">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_type</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -344,6 +379,7 @@
 <span class="sd">        `query_type` : DBConnector class method</span>
 <span class="sd">            One of *DBConnector._select_query*, *DBConnector._proc_query*,</span>
 <span class="sd">            *DBConnector._iud_query*.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        list of lists</span>
@@ -352,81 +388,47 @@
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
 <span class="sd">        Any additional arguments required by the query methods must be supplied as *kwargs*.</span>
-<span class="sd">        This method retries failed queries due to *excusable errors* an indefinitely with</span>
-<span class="sd">        exponential back-off. Queries that fail due to failure to retrieve a connection also retry</span>
+<span class="sd">        This method retries failed queries due to *retry_errors* with exponential back-off.</span>
+<span class="sd">        Queries that fail due to failure to retrieve a connection also retry</span>
 <span class="sd">        with exponential back-off, but only up to *self.cnx_retries* times.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">sleep_interval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span>
         <span class="k">while</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
-            <span class="n">cnx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_connect</span><span class="p">()</span>
+            <span class="n">cnx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connect_retry</span><span class="p">(</span><span class="n">cnx_retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span><span class="p">)</span>
             <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
             <span class="k">try</span><span class="p">:</span>
                 <span class="n">result</span> <span class="o">=</span> <span class="n">query_type</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
                 <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">time_taken</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
-                    <span class="n">sql</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sqlquery&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                    <span class="n">sql</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sqlquery&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">query_log</span><span class="o">.</span><span class="n">log_query</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">time_taken</span><span class="p">)</span>
             <span class="k">except</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">Error</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">excusable_errors</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">err</span><span class="o">.</span><span class="n">errno</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">retry_errors</span><span class="p">:</span>
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">query_log</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                         <span class="n">time_taken</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
-                        <span class="n">sql</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sqlquery&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                        <span class="n">sql</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sqlquery&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">query_log</span><span class="o">.</span><span class="n">log_query</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">time_taken</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MySQL Error... </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
-                    <span class="n">TIME</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span> <span class="o">*=</span> <span class="mi">2</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">_return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
+                    <span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MySQL Error: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="n">TIME</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep_interval</span><span class="p">)</span>
+                    <span class="n">sleep_interval</span> <span class="o">*=</span> <span class="mi">2</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">_return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
                     <span class="k">raise</span>
+            <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">_return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
                 <span class="n">err</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="s2">&quot;Encountered an error during mysql query &quot;</span>
-                                                         <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">).&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">raise</span> <span class="n">DBConnectorException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Encountered an error during MySQL query (</span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">_return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span>
 
-<div class="viewcode-block" id="DBConnector.query"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.query">[docs]</a>    <span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sqlquery</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Query the database using select (with resilience).</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        `sqlquery` : string</span>
-<span class="sd">            SQL `select` statement to be executed.</span>
-<span class="sd">        `df` : boolean</span>
-<span class="sd">            Set to True to return query results as Pandas DataFrame. Column names will be extracted</span>
-<span class="sd">            from the *sqlquery* and converted to lowercase (do not use &quot;select * from&quot;).</span>
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        list</span>
-<span class="sd">            List of tuples, [(R1C1, R1C2, ...), (R2C1, R2C2, ...), ...].</span>
-<span class="sd">            Length of list corresponds to N rows returned, length of tuples corresponds to columns</span>
-<span class="sd">            selected.</span>
-<span class="sd">        See Also</span>
-<span class="sd">        --------</span>
-<span class="sd">        MySQL Connector Python Docs: https://dev.mysql.com/doc/connector-python/en/index.html.</span>
-<span class="sd">        Notes</span>
-<span class="sd">        -----</span>
-<span class="sd">        MySQL Connector Python is prone to dropped connections - this wrapper adds resilience by</span>
-<span class="sd">        retrying.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_select_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="DBConnector.proc"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.proc">[docs]</a>    <span class="k">def</span> <span class="nf">proc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proc</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Execute a MySQL procedure with resilience.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_proc_query</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="n">proc</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="DBConnector.iud_query"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.iud_query">[docs]</a>    <span class="k">def</span> <span class="nf">iud_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Execute an insert/update/delete SQL statement with resilience.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_iud_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="DBConnector.close_connections"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.close_connections">[docs]</a>    <span class="k">def</span> <span class="nf">close_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_close_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Close all connections when done for optimal DB efficiency.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_safe_close</span><span class="p">(</span><span class="n">cnx</span><span class="p">):</span>
@@ -438,6 +440,8 @@
                     <span class="n">cnx</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">):</span>
             <span class="k">pass</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span>
         <span class="k">return</span>
@@ -445,32 +449,30 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_select_query</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute a select query.&quot;&quot;&quot;</span>
-        <span class="n">sqlquery</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sqlquery&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;df&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">sqlquery</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sqlquery&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;select query: </span><span class="si">{</span><span class="n">sqlquery</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;df&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
         <span class="n">cursor</span> <span class="o">=</span> <span class="n">cnx</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sqlquery</span><span class="p">)</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">df</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span>
-            <span class="kn">import</span> <span class="nn">re</span>
+            <span class="n">debug</span><span class="p">(</span><span class="s2">&quot;converting query result to dataframe&quot;</span><span class="p">)</span>
             <span class="n">col_regex</span> <span class="o">=</span> <span class="s2">&quot;(?&lt;=^select)[a-zA-Z0-9_\s*(),`]+(?=from)&quot;</span>
             <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; as &quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;`&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span>
                     <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">col_regex</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">.</span><span class="n">lower</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span>
-            <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-                <span class="k">return</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">DataFrame</span><span class="p">({</span><span class="n">c</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">})</span>
+            <span class="k">return</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_proc_query</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute a MySQL procedure.&quot;&quot;&quot;</span>
-        <span class="n">proc</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;proc&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="n">args</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;args&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">proc</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;proc&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">proc_args</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;proc_args&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;procedure call: call </span><span class="si">{</span><span class="n">proc</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">proc_args</span><span class="p">))</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
         <span class="n">cursor</span> <span class="o">=</span> <span class="n">cnx</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">cursor</span><span class="o">.</span><span class="n">callproc</span><span class="p">(</span><span class="n">proc</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">callproc</span><span class="p">(</span><span class="n">proc</span><span class="p">,</span> <span class="n">proc_args</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">cursor</span><span class="o">.</span><span class="n">stored_results</span><span class="p">():</span>
             <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
@@ -479,54 +481,113 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_iud_query</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Execute an insert/update/delete SQL statement.&quot;&quot;&quot;</span>
-        <span class="n">size</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="n">sqlquery</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sqlquery&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">chunk_size</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;chunk_size&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">sqlquery</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sqlquery&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;insert/update/delete query: </span><span class="si">{</span><span class="n">sqlquery</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">cursor</span> <span class="o">=</span> <span class="n">cnx</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sqlquery</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">size</span><span class="p">):</span>
-                <span class="n">cursor</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:(</span><span class="n">i</span><span class="o">+</span><span class="n">size</span><span class="p">)])</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">chunk_size</span><span class="p">):</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:(</span><span class="n">i</span><span class="o">+</span><span class="n">chunk_size</span><span class="p">)])</span>
         <span class="n">cnx</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="n">affected</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">rowcount</span>
         <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="k">return</span> <span class="kc">True</span></div>
+        <span class="k">return</span> <span class="n">affected</span>
+
+<div class="viewcode-block" id="DBConnector.query"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.query">[docs]</a>    <span class="k">def</span> <span class="nf">query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sqlquery</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Query the database using a select statement.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sqlquery : string</span>
+<span class="sd">            SQL statement to be executed.</span>
+<span class="sd">        df : boolean, optional</span>
+<span class="sd">            Set to True to return query results as Pandas DataFrame. Column names will be extracted</span>
+<span class="sd">            from the *sqlquery* and converted to lowercase (do not use &quot;select * from&quot;).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list *OR* Pandas DataFrame</span>
+<span class="sd">            If `df=False`, returns a list of tuples, [(R1C1, R1C2, ...), (R2C1, R2C2, ...), ...].</span>
+<span class="sd">            Length of list corresponds to N rows returned, length of tuples corresponds to columns</span>
+<span class="sd">            selected.</span>
+
+<span class="sd">            If `df=True`, returns a Pandas DataFrame containing the columns from the `sqlquery` and</span>
+<span class="sd">            any rows returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_select_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DBConnector.proc"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.proc">[docs]</a>    <span class="k">def</span> <span class="nf">proc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proc</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">proc_args</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Execute a MySQL procedure.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        proc : string</span>
+<span class="sd">            The name of the MySQL procedure.</span>
+<span class="sd">        proc_args : list</span>
+<span class="sd">            A list of arguments to pass to the procedure.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            A list of stored results, see `here &lt;https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-stored-results.html&gt;`_.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_proc_query</span><span class="p">,</span> <span class="n">proc</span><span class="o">=</span><span class="n">proc</span><span class="p">,</span> <span class="n">proc_args</span><span class="o">=</span><span class="n">proc_args</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DBConnector.iud_query"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.iud_query">[docs]</a>    <span class="k">def</span> <span class="nf">iud_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sqlquery</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Execute an insert/update/delete SQL statement.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        sqlquery : string</span>
+<span class="sd">            SQL statement to be executed. Optionally use &#39;%s&#39; placeholders for values in conjunction</span>
+<span class="sd">            with the `data` arg.</span>
+<span class="sd">        data : list of lists, optional</span>
+<span class="sd">            A list of lists containing any values that should be used to populate &#39;%s&#39; placeholders</span>
+<span class="sd">            in the VALUES section of `sqlquery`.</span>
+<span class="sd">        chunk_size : int, optional</span>
+<span class="sd">            Optionally break the insert up into chunks of this size when using `data` to pass</span>
+<span class="sd">            values. This can be useful if inserts to the DB are slow as shorter lived SQL queries</span>
+<span class="sd">            are generally preferred.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        int</span>
+<span class="sd">            The number of rows affected.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_iud_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span></div></div>
 </pre></div>
 
+           </div>
           </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Jamie Taylor.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">MySQL-DBConnector 1.1.2 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2018, Jamie Taylor.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
-    </div>
-  </body>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
 </html>
