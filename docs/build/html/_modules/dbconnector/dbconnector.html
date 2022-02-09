@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dbconnector.dbconnector &mdash; MySQL-DBConnector 1.3.1 documentation</title>
+  <title>dbconnector.dbconnector &mdash; MySQL-DBConnector 1.3.2 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -156,7 +156,8 @@
     <span class="k">def</span> <span class="nf">_return_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cnx</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return a connection to the pool. Incoming connections are tested and if they are no longer</span>
-<span class="sd">        usable will be disgarded using *DBConnectionPool._close_connection*, which frees up the slot.</span>
+<span class="sd">        usable will be disgarded using *DBConnectionPool._close_connection*, which frees up the</span>
+<span class="sd">        slot.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cnx</span><span class="p">,</span> <span class="n">connection</span><span class="o">.</span><span class="n">MySQLConnection</span><span class="p">)</span> <span class="ow">and</span> <span class="n">cnx</span><span class="o">.</span><span class="n">is_connected</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">connection_pool</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
@@ -274,7 +275,7 @@
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_close_connections</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">close_connections</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_test_query</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -426,9 +427,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">_return_connection</span><span class="p">(</span><span class="n">cnx</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span>
 
-    <span class="k">def</span> <span class="nf">_close_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="DBConnector.close_connections"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.close_connections">[docs]</a>    <span class="k">def</span> <span class="nf">close_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Close all connections when done for optimal DB efficiency.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span></div>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_safe_close</span><span class="p">(</span><span class="n">cnx</span><span class="p">):</span>
@@ -560,7 +561,8 @@
 <span class="sd">        int</span>
 <span class="sd">            The number of rows affected.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_iud_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_iud_query</span><span class="p">,</span> <span class="n">sqlquery</span><span class="o">=</span><span class="n">sqlquery</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+                                <span class="n">chunk_size</span><span class="o">=</span><span class="n">chunk_size</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>

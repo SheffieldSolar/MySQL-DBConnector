@@ -205,7 +205,7 @@ class DBConnector:
         return self
 
     def __exit__(self, *args):
-        self._close_connections()
+        self.close_connections()
 
     def _test_query(self):
         """
@@ -357,8 +357,8 @@ class DBConnector:
         self.pool._return_connection(cnx)
         return result
 
-    def _close_connections(self):
-        """Close all connections when done for optimal DB efficiency."""
+    def close_connections(self):
+        """Close all connections when finished for optimal DB efficiency."""
         self.pool.close_all()
 
     @staticmethod
