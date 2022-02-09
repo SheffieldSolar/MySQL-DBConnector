@@ -195,10 +195,10 @@ class DBConnector:
             errorcode.ER_LOCK_WAIT_TIMEOUT,
         )
         debug(f"config: {self._redacted_connector_args()}")
-        self._test_query()
         self.sleep_interval = sleep_interval
         self.cnx_retries = cnx_retries
         self.query_log = DBConnectorLog(query_log, self.connector_args)
+        self._test_query()
 
     def __enter__(self):
         """Enter the context manager. Test the connection and log a debug message."""
