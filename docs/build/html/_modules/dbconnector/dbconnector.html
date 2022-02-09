@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dbconnector.dbconnector &mdash; MySQL-DBConnector 1.3.2 documentation</title>
+  <title>dbconnector.dbconnector &mdash; MySQL-DBConnector 1.3.3 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -265,13 +265,13 @@
             <span class="n">errorcode</span><span class="o">.</span><span class="n">ER_LOCK_WAIT_TIMEOUT</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;config: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_redacted_connector_args</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_test_query</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sleep_interval</span> <span class="o">=</span> <span class="n">sleep_interval</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cnx_retries</span> <span class="o">=</span> <span class="n">cnx_retries</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">query_log</span> <span class="o">=</span> <span class="n">DBConnectorLog</span><span class="p">(</span><span class="n">query_log</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connector_args</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Enter the context manager. Test the connection and log a debug message.&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_test_query</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -428,7 +428,7 @@
         <span class="k">return</span> <span class="n">result</span>
 
 <div class="viewcode-block" id="DBConnector.close_connections"><a class="viewcode-back" href="../../modules.html#dbconnector.dbconnector.DBConnector.close_connections">[docs]</a>    <span class="k">def</span> <span class="nf">close_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Close all connections when done for optimal DB efficiency.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Close all connections when finished for optimal DB efficiency.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">close_all</span><span class="p">()</span></div>
 
     <span class="nd">@staticmethod</span>

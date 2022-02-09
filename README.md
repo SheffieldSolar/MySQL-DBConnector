@@ -2,7 +2,7 @@
 
 A  wrapper for the MySQL Python connector that provides additional resilience and functionality.
 
-**Latest version: 1.3.2**
+**Latest version: 1.3.3**
 
 ## About this repository
 
