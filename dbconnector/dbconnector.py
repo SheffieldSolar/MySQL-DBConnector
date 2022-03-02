@@ -14,7 +14,7 @@ import sys
 import inspect
 from logging import info, debug, warning, error, critical, exception
 import re
-from typing import Optional
+from typing import Optional, Dict, List
 
 from pandas import DataFrame
 import mysql.connector
@@ -56,7 +56,7 @@ class DBConnectorLog:
 
 class DBConnectionPool:
     """Handle connections to the DB manually rather than relying on MySQL connection pooling."""
-    def __init__(self, connector_args: dict, pool_size: int):
+    def __init__(self, connector_args: Dict, pool_size: int):
         self.conn_args = connector_args
         self.connection_pool = []
         self.connections = 0
@@ -162,7 +162,7 @@ class DBConnector:
     """
     def __init__(
         self,
-        connector_args: dict,
+        connector_args: Dict,
         query_log: Optional[str] = None,
         pool_size: int = 1,
         cnx_retries: int = 10,
@@ -451,7 +451,7 @@ class DBConnector:
         """
         return self._safe_query(self._select_query, sqlquery=sqlquery, df=df)
 
-    def proc(self, proc: str, proc_args: list):
+    def proc(self, proc: str, proc_args: List):
         """
         Execute a MySQL procedure.
         
@@ -469,7 +469,7 @@ class DBConnector:
         """
         return self._safe_query(self._proc_query, proc=proc, proc_args=proc_args)
 
-    def iud_query(self, sqlquery: str, data: Optional[list[list]] = None, chunk_size: int = 1000):
+    def iud_query(self, sqlquery: str, data: Optional[List[List]] = None, chunk_size: int = 1000):
         """
         Execute an insert/update/delete SQL statement.
         
