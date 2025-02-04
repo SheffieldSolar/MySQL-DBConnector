@@ -174,7 +174,8 @@ class DBConnector:
             "buffered": True,
             "get_warnings": True,
             "raise_on_warnings": False,
-            "use_pure": True,
+            "use_pure": False,
+            "compress": True
         }
         self.connector_args.update(connector_args)
         self.pool = DBConnectionPool(self.connector_args, pool_size)
