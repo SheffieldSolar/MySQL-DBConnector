@@ -39,7 +39,8 @@ Some of the connector args have default values which override the defaults in th
 - `buffered`: True
 - `get_warnings`: True
 - `raise_on_warnings`: False
-- `use_pure`: True
+- `use_pure`: False
+- `compress`: True
 
 You can override these yourself if you prefer.
 
