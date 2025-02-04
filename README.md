@@ -2,13 +2,13 @@
 
 A  wrapper for the MySQL Python connector that provides additional resilience and functionality.
 
-**Latest version: 1.3.4**
+**Latest version: 1.4.0**
 
 ## About this repository
 
 * A wrapper for the MySQL Python connector that provides additional resilience and functionality.
 * Implements connection pooling that's more reliable.
-* Developed and tested with Python 3.9, should work with 3.5+
+* Developed and tested with Python 3.11, should work with 3.11+
 
 ## How do I get set up?
 
@@ -39,7 +39,8 @@ Some of the connector args have default values which override the defaults in th
 - `buffered`: True
 - `get_warnings`: True
 - `raise_on_warnings`: False
-- `use_pure`: True
+- `use_pure`: False
+- `compress`: True
 
 You can override these yourself if you prefer.
 

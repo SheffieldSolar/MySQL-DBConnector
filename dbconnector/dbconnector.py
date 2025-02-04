@@ -174,7 +174,8 @@ class DBConnector:
             "buffered": True,
             "get_warnings": True,
             "raise_on_warnings": False,
-            "use_pure": True,
+            "use_pure": False,
+            "compress": True
         }
         self.connector_args.update(connector_args)
         self.pool = DBConnectionPool(self.connector_args, pool_size)
@@ -441,13 +442,11 @@ class DBConnector:
 
         Returns
         -------
-        list *OR* Pandas DataFrame
+        List or Pandas DataFrame
             If `df=False`, returns a list of tuples, [(R1C1, R1C2, ...), (R2C1, R2C2, ...), ...].
             Length of list corresponds to N rows returned, length of tuples corresponds to columns
-            selected.
-
-            If `df=True`, returns a Pandas DataFrame containing the columns from the `sqlquery` and
-            any rows returned.
+            selected. If `df=True`, returns a Pandas DataFrame containing the columns from the
+            `sqlquery` and any rows returned.
         """
         return self._safe_query(self._select_query, sqlquery=sqlquery, df=df)
 
@@ -464,8 +463,9 @@ class DBConnector:
 
         Returns
         -------
-        list
-            A list of stored results, see `here <https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-stored-results.html>`_.
+        List
+            A list of stored results, see
+            https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-stored-results.html
         """
         return self._safe_query(self._proc_query, proc=proc, proc_args=proc_args)
 

@@ -1,20 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modules &mdash; MySQL-DBConnector 1.3.4 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <title>Modules &mdash; MySQL-DBConnector 1.4.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=9172181d"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -26,14 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MySQL-DBConnector
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MySQL-DBConnector
           </a>
-              <div class="version">
-                1.3
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -43,7 +45,16 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="index.html">Welcome to MySQL-DBConnector’s documentation!</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dbconnector">dbconnector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dbconnector">dbconnector</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dbconnector.dbconnector.DBConnector"><code class="docutils literal notranslate"><span class="pre">DBConnector</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.close_connections"><code class="docutils literal notranslate"><span class="pre">DBConnector.close_connections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.iud_query"><code class="docutils literal notranslate"><span class="pre">DBConnector.iud_query()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.proc"><code class="docutils literal notranslate"><span class="pre">DBConnector.proc()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dbconnector.dbconnector.DBConnector.query"><code class="docutils literal notranslate"><span class="pre">DBConnector.query()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -61,8 +72,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Modules</li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Modules</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -73,26 +84,26 @@
            <div itemprop="articleBody">
              
   <section id="modules">
-<h1><a class="toc-backref" href="#id2">Modules</a><a class="headerlink" href="#modules" title="Permalink to this headline"></a></h1>
-<div class="contents topic" id="contents">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Modules</a><a class="headerlink" href="#modules" title="Link to this heading"></a></h1>
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#modules" id="id2">Modules</a></p>
+<li><p><a class="reference internal" href="#modules" id="id1">Modules</a></p>
 <ul>
-<li><p><a class="reference internal" href="#dbconnector" id="id3">dbconnector</a></p></li>
+<li><p><a class="reference internal" href="#dbconnector" id="id2">dbconnector</a></p></li>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="dbconnector">
-<h2><a class="toc-backref" href="#id3">dbconnector</a><a class="headerlink" href="#dbconnector" title="Permalink to this headline"></a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">dbconnector</a><a class="headerlink" href="#dbconnector" title="Link to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="dbconnector.dbconnector.DBConnector">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dbconnector.dbconnector.</span></span><span class="sig-name descname"><span class="pre">DBConnector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connector_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnx_retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dbconnector.dbconnector.</span></span><span class="sig-name descname"><span class="pre">DBConnector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connector_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pool_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnx_retries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sleep_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A wrapper for the MySQL Python connector that provides additional resilience and functionality.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>connector_args</strong><span class="classifier">dict</span></dt><dd><p>A dictionary of connect args to pass to <cite>mysql.connector.connect()</cite>. The full list of args
 can be found <a class="reference external" href="https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html">here</a>.
@@ -126,16 +137,16 @@ failed connection / query - this arg determines the initial sleep time. Default 
 <p>Some <cite>connector_args</cite> have no defaults and are always required: ‘user’, ‘password’, ‘database’.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dbconnector.dbconnector.DBConnector.close_connections">
-<span class="sig-name descname"><span class="pre">close_connections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.close_connections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.close_connections" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">close_connections</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.close_connections"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.close_connections" title="Link to this definition"></a></dt>
 <dd><p>Close all connections when finished for optimal DB efficiency.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dbconnector.dbconnector.DBConnector.iud_query">
-<span class="sig-name descname"><span class="pre">iud_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sqlquery</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.iud_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.iud_query" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">iud_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sqlquery</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.iud_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.iud_query" title="Link to this definition"></a></dt>
 <dd><p>Execute an insert/update/delete SQL statement.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>sqlquery</strong><span class="classifier">string</span></dt><dd><p>SQL statement to be executed. Optionally use ‘%s’ placeholders for values in conjunction
 with the <cite>data</cite> arg.</p>
@@ -149,7 +160,7 @@ are generally preferred.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
 <dt>int</dt><dd><p>The number of rows affected.</p>
 </dd>
@@ -160,10 +171,10 @@ are generally preferred.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dbconnector.dbconnector.DBConnector.proc">
-<span class="sig-name descname"><span class="pre">proc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.proc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.proc" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">proc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">proc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proc_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.proc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.proc" title="Link to this definition"></a></dt>
 <dd><p>Execute a MySQL procedure.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>proc</strong><span class="classifier">string</span></dt><dd><p>The name of the MySQL procedure.</p>
 </dd>
@@ -171,9 +182,10 @@ are generally preferred.</p>
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>list</dt><dd><p>A list of stored results, see <a class="reference external" href="https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-stored-results.html">here</a>.</p>
+<dt>List</dt><dd><p>A list of stored results, see
+<a class="reference external" href="https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-stored-results.html">https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-stored-results.html</a></p>
 </dd>
 </dl>
 </dd>
@@ -182,10 +194,10 @@ are generally preferred.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dbconnector.dbconnector.DBConnector.query">
-<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sqlquery</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.query" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sqlquery</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dbconnector/dbconnector.html#DBConnector.query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dbconnector.dbconnector.DBConnector.query" title="Link to this definition"></a></dt>
 <dd><p>Query the database using a select statement.</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>sqlquery</strong><span class="classifier">string</span></dt><dd><p>SQL statement to be executed.</p>
 </dd>
@@ -194,13 +206,12 @@ from the <em>sqlquery</em> and converted to lowercase (do not use “select * fr
 </dd>
 </dl>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt>list <em>OR</em> Pandas DataFrame</dt><dd><p>If <cite>df=False</cite>, returns a list of tuples, [(R1C1, R1C2, …), (R2C1, R2C2, …), …].
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>List or Pandas DataFrame</dt><dd><p>If <cite>df=False</cite>, returns a list of tuples, [(R1C1, R1C2, …), (R2C1, R2C2, …), …].
 Length of list corresponds to N rows returned, length of tuples corresponds to columns
-selected.</p>
-<p>If <cite>df=True</cite>, returns a Pandas DataFrame containing the columns from the <cite>sqlquery</cite> and
-any rows returned.</p>
+selected. If <cite>df=True</cite>, returns a Pandas DataFrame containing the columns from the
+<cite>sqlquery</cite> and any rows returned.</p>
 </dd>
 </dl>
 </dd>
